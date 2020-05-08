@@ -30,10 +30,18 @@ int main(int argc, char *argv[]) {
 
   printargs(args);
 
-  //get the lowest point (by y-coordinate) O(n)
-  point_t lowest = miny(args->points, args->num_points);
+  //get the index of the lowest point (by y-coordinate) O(n)
+  size_t li = miny(args->points, args->num_points);
+  point_t lowest = args->points[li];
 
   printf("lowest point = (%g, %g)\n", lowest.x, lowest.y);
+
+  point_t tmp = args->points[0];
+  args->points[0] = args->points[li];
+  args->points[li] = tmp;
+
+  //sort rest of the points by angle (exclude lowest)
+  sort_angle(&(args->points[1]), args->num_points-1, args->points[0]);
 
   free(args);
 
