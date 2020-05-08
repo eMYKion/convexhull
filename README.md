@@ -6,7 +6,8 @@
 
 ```bash
 $ make
-$ ./a.out < input.txt```
+$ ./a.out < input.txt
+```
 
 The input text file must be in the following format:
 
