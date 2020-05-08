@@ -43,6 +43,9 @@ int main(int argc, char *argv[]) {
   //sort rest of the points by angle (exclude lowest)
   sort_angle(&(args->points[1]), args->num_points-1, args->points[0]);
 
+  printf("sorted points by angle:\n");
+  printargs(args);
+
   free(args);
 
   return 0;

@@ -65,10 +65,10 @@ void part_angle(point_t *points, size_t lo, size_t hi, size_t piv, point_t lop) 
    *  angle(vec(lop,x), unit) >= piv_angle
    */
   while (i < j) {
-    vi.start = points[i];
-
+    vi.end = points[i];//bug fix
+    double vi_angle = angle(vi, unit);
     //vi is in the wrong partition
-    if (angle(vi, unit) >= piv_angle) {
+    if (vi_angle >= piv_angle) {
       point_t tmp = points[j];
       points[j] = points[i];
       points[i] = tmp;
