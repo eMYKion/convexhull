@@ -4,7 +4,7 @@
 
 ```bash
 $ make
-$ ./a.out < input.txt
+$ ./a.out < tests/input.txt
 ```
 
 The input text file must be in the following format:
@@ -31,3 +31,18 @@ For example, `input.txt` could be:
 3 3.5
 -1.4 5.6
 ```
+
+## Output
+
+The output is in the following format:
+```
+m
+x1 y1
+x2 y2
+...
+xm ym
+```
+
+where `m` is the number of points in the convex hull
+and the points are in counter-clockwise order.
+`x1 y1` is the lowest (y-coordinate) of the points.
