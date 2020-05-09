@@ -1,3 +1,6 @@
+/* Mayank Mali, May 2020
+ */
+
 #ifndef HULL_H
 #define HULL_H
 

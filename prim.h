@@ -1,3 +1,6 @@
+/* Mayank Mali, May 2020
+ */
+
 #ifndef PRIM_H
 #define PRIM_H
 

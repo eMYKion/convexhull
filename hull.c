@@ -1,3 +1,6 @@
+/* Mayank Mali, May 2020
+ */
+
 #include "hull.h"
 #include "prim.h"
 #include <stdio.h>
