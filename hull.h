@@ -12,4 +12,6 @@ void sort_angle_helper(point_t *points, size_t lo, size_t hi, point_t lop);
 
 void sort_angle(point_t *points, size_t n, point_t lop);
 
+void sorted_to_convex(point_t *points, size_t n, point_t *c_hull, size_t *m);
+
 #endif

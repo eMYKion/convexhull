@@ -125,3 +125,46 @@ void sort_angle(point_t *points, size_t n, point_t lop) {
   sort_angle_helper(points, 0, n, lop);
 }
 
+/* stores points in c_hull array so that
+ * the points form a polygon that is 
+ * convex hull of points in points.
+ *
+ * requires that c_hull has size at least n and n >= 3.
+ *
+ * Requires that points is an array of size n
+ * that is sorted by increasing angle w.r.t.
+ * to positive x-axis.
+ *
+ * requires that points[0] is the lowest point (by y-coordinate)
+ * in points.
+ *
+ * ensures that *m is the number of points in the convex hull.
+ */
+void sorted_to_convex(point_t *points, size_t n, point_t *c_hull, size_t *m) {
+  c_hull[0] = points[0];
+  size_t j = 1;
+
+  seg_t next;//the last segment to be in the convex hull
+  next.start = points[0];
+  next.end = points[1];
+  
+  for (size_t i = 2; i < n; i++) {
+    point_t curr = points[i];
+
+    //if curr on left side of next vector, include it in hull
+    if (sideof(curr, next) >= 0 ) {
+      c_hull[j] = next.end;
+      j++;
+
+      next.start = next.end;
+      next.end = curr;
+    } else {//if curr on right side of last vector, substitute
+      next.end = curr;
+    }
+  }
+  c_hull[j] = next.end;
+  j++;
+
+  *m = j;
+}
+

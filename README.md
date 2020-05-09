@@ -1,5 +1,3 @@
-# INCOMPLETE
-
 # Convex Hull
 
 ## Usage:
