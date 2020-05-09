@@ -28,13 +28,17 @@ int main(int argc, char *argv[]) {
     return -1;
   }
 
+#ifdef DEBUG
   printpoints(args->points, args->num_points);
+#endif
 
   //get the index of the lowest point (by y-coordinate) O(n)
   size_t li = miny(args->points, args->num_points);
   point_t lowest = args->points[li];
 
+#ifdef DEBUG
   printf("lowest point = (%g, %g)\n", lowest.x, lowest.y);
+#endif
 
   point_t tmp = args->points[0];
   args->points[0] = args->points[li];
@@ -43,8 +47,10 @@ int main(int argc, char *argv[]) {
   //sort rest of the points by angle (exclude lowest)
   sort_angle(&(args->points[1]), args->num_points-1, args->points[0]);
 
+#ifdef DEBUG
   printf("sorted %zu points by angle:\n", args->num_points);
   printpoints(args->points, args->num_points);
+#endif
 
   point_t *c_hull;
   if ((c_hull = malloc(args->num_points * sizeof(point_t))) == NULL) {
@@ -55,8 +61,10 @@ int main(int argc, char *argv[]) {
 
   size_t num_hull;
   sorted_to_convex(args->points, args->num_points, c_hull, &num_hull);
-
+#ifdef DEBUG
   printf("convex hull (%zu points):\n", num_hull);
+#endif
+  printf("%zu\n", num_hull);
   printpoints(c_hull, num_hull);
 
   free(c_hull);
@@ -121,7 +129,6 @@ int getargs(args_t **args) {
 
 void printpoints(point_t *points, size_t n) {
   dbg_assert(points != NULL);
-  printf("n = %zu\n", n);
   point_t curr;
   for (size_t i = 0; i < n; i++) {
     curr = points[i];
