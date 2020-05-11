@@ -19,7 +19,6 @@ typedef struct args{
 } args_t;
 
 int getargs(args_t **args);
-void printpoints(point_t *points, size_t n);
 
 int main(int argc, char *argv[]) {
  
@@ -130,13 +129,4 @@ int getargs(args_t **args) {
   return 0;
 }
 
-void printpoints(point_t *points, size_t n) {
-  dbg_assert(points != NULL);
-  point_t curr;
-  for (size_t i = 0; i < n; i++) {
-    curr = points[i];
-    printf("%lf %lf\n", curr.x, curr.y);
-  }
-
-}
 

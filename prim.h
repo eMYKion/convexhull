@@ -5,6 +5,7 @@
 #define PRIM_H
 
 #include <math.h>
+#include <stdio.h>
 
 typedef struct point {
   double x;
@@ -31,4 +32,5 @@ double dot(vec_t a, vec_t b);
 
 double angle(ray_t a, ray_t b);
 
+void printpoints(point_t *points, size_t n);
 #endif

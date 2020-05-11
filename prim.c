@@ -9,6 +9,12 @@
 #include <math.h>
 #include <stdio.h>
 
+#ifdef DEBUG
+#define dbg_assert(expr) assert(expr)
+#else
+#define dbg_assert(expr) (void)sizeof(expr);
+#endif
+
 /* returns the magnitude of the cross
  * product between vectors a and b
  */
@@ -65,5 +71,17 @@ double vabs(vec_t a) {
 double angle(ray_t a, ray_t b) {
   double arg = dot(a,b)/(vabs(a)*vabs(b));
   return acos(arg);
+}
+
+/* prints an array of points of size n
+ */
+void printpoints(point_t *points, size_t n) {
+  dbg_assert(points != NULL);
+  point_t curr;
+  for (size_t i = 0; i < n; i++) {
+    curr = points[i];
+    printf("%lf %lf\n", curr.x, curr.y);
+  }
+
 }
 
