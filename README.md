@@ -1,5 +1,7 @@
 # Convex Hull
 
+C code to compute the convex hull of a set of 2D points.
+
 ## Usage:
 
 ```bash
